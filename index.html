@@ -1,80 +1,196 @@
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MySearch - محرك البحث</title>
+
+<title>MySearch - محرك البحث الذكي</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: white;
+    font-family: Arial, sans-serif;
+    background: #fff;
     color: #202124;
-    text-align: center;
 }
 
 header {
-    text-align: right;
-    padding: 20px;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header a {
-    color: #4285f4;
+.brand {
+    font-size: 25px;
+    font-weight: bold;
     text-decoration: none;
 }
 
 main {
-    padding: 100px 20px 60px;
+    max-width: 850px;
+    margin: 65px auto 40px;
+    padding: 20px;
+    text-align: center;
 }
 
 .logo {
-    font-size: 65px;
+    font-size: clamp(45px, 9vw, 76px);
     font-weight: bold;
+    letter-spacing: -3px;
+    margin-bottom: 15px;
+}
+
+.blue { color: #4285f4; }
+.red { color: #ea4335; }
+.yellow { color: #fbbc05; }
+.green { color: #34a853; }
+
+.subtitle {
+    color: #70757a;
     margin-bottom: 30px;
 }
 
-.b { color: #4285f4; }
-.r { color: #ea4335; }
-.y { color: #fbbc05; }
-.g { color: #34a853; }
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-form {
-    max-width: 580px;
-    margin: auto;
+.tab {
+    border: 1px solid #dadce0;
+    border-radius: 22px;
+    padding: 10px 19px;
+    background: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.tab.active {
+    background: #e8f0fe;
+    color: #1967d2;
+    border-color: #8ab4f8;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #dadce0;
+    border-radius: 30px;
+    padding: 5px 15px;
+    box-shadow: 0 1px 5px #00000012;
+}
+
+.search-box:focus-within,
+.search-box:hover {
+    box-shadow: 0 1px 8px #00000025;
+}
+
+.search-icon {
+    font-size: 23px;
+    color: #70757a;
+    padding: 0 8px;
 }
 
 input {
-    width: 90%;
-    padding: 15px;
-    border: 1px solid #dfe1e5;
-    border-radius: 30px;
-    font-size: 16px;
+    flex: 1;
+    width: 50px;
+    min-width: 0;
+    border: none;
     outline: none;
+    padding: 13px 5px;
+    font-size: 16px;
+    background: transparent;
 }
 
-input:hover {
-    box-shadow: 0 1px 6px #00000030;
-}
-
-button {
-    margin: 20px 5px;
-    padding: 12px 20px;
-    border: 1px solid #dadce0;
-    border-radius: 5px;
+.search-button {
+    margin-top: 22px;
+    border: none;
+    border-radius: 6px;
+    background: #4285f4;
+    color: white;
+    padding: 13px 28px;
+    font-size: 16px;
     cursor: pointer;
-    background: #f8f9fa;
 }
 
-button:hover {
-    background: #eeeeee;
+.search-button:hover {
+    background: #1a73e8;
+}
+
+.section {
+    margin-top: 45px;
+    text-align: right;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.section h2 {
+    font-size: 19px;
+}
+
+#history {
+    padding: 0;
+    list-style: none;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.history-query {
+    flex: 1;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    color: #1a73e8;
+}
+
+.small-button {
+    border: 1px solid #dadce0;
+    background: white;
+    border-radius: 5px;
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.empty {
+    color: #70757a;
+    font-size: 14px;
 }
 
 footer {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 22px;
     color: #70757a;
-    margin-top: 40px;
     font-size: 14px;
+}
+
+@media (max-width: 500px) {
+    main {
+        margin-top: 30px;
+        padding: 15px;
+    }
+
+    header {
+        padding: 16px;
+    }
+
+    .search-box {
+        padding: 4px 8px;
+    }
 }
 </style>
 </head>
@@ -82,36 +198,186 @@ footer {
 <body>
 
 <header>
-    <a href="https://www.wikipedia.org">Wikipedia</a>
+    <a class="brand" href="./">
+        <span class="blue">My</span><span class="red">Search</span>
+    </a>
+    <a href="https://www.google.com" target="_blank"
+       rel="noopener noreferrer">Google</a>
 </header>
 
 <main>
+
     <div class="logo">
-        <span class="b">M</span><span class="r">y</span><span class="y">S</span><span class="b">e</span><span class="g">a</span><span class="r">r</span><span class="y">c</span><span class="b">h</span>
+        <span class="blue">M</span><span class="red">y</span><span class="yellow">S</span><span class="blue">e</span><span class="green">a</span><span class="red">r</span><span class="yellow">c</span><span class="blue">h</span>
     </div>
 
-    <form action="https://www.google.com/search" method="get">
-        <input
-            type="text"
-            name="q"
-            placeholder="ابحث في الإنترنت..."
-            required
-        >
+    <p class="subtitle">ابحث واكتشف العالم من مكان واحد</p>
 
-        <div>
-            <button type="submit">بحث</button>
-            <button type="button" onclick="window.location.href='https://www.google.com'">
-                فتح Google
-            </button>
+    <div class="tabs">
+        <button class="tab active" data-type="web">🌐 الويب</button>
+        <button class="tab" data-type="images">🖼️ الصور</button>
+        <button class="tab" data-type="videos">▶️ الفيديوهات</button>
+    </div>
+
+    <form id="searchForm">
+        <div class="search-box">
+            <span class="search-icon">⌕</span>
+            <input
+                id="query"
+                type="search"
+                placeholder="ماذا تريد أن تبحث عنه؟"
+                aria-label="كلمات البحث"
+                required
+            >
         </div>
+
+        <button class="search-button" type="submit">
+            🔍 بحث الآن
+        </button>
     </form>
 
-    <p>اكتشف العالم مع MySearch</p>
+    <section class="section">
+        <h2>🕘 سجل البحث</h2>
+        <p class="empty" id="emptyMessage">لم تبحث عن أي شيء بعد.</p>
+        <ul id="history"></ul>
+        <button class="small-button" id="clearHistory" type="button">
+            مسح سجل البحث
+        </button>
+    </section>
+
 </main>
 
 <footer>
-    MySearch © 2026
+    MySearch © 2026 — محرك البحث الخاص بك
 </footer>
+
+<script>
+const form = document.getElementById("searchForm");
+const input = document.getElementById("query");
+const tabs = document.querySelectorAll(".tab");
+const historyList = document.getElementById("history");
+const emptyMessage = document.getElementById("emptyMessage");
+const clearButton = document.getElementById("clearHistory");
+
+let searchType = "web";
+let historyItems = [];
+
+try {
+    const saved = localStorage.getItem("mysearch-history");
+    const parsed = saved ? JSON.parse(saved) : [];
+
+    if (Array.isArray(parsed)) {
+        historyItems = parsed.filter(
+            item => typeof item === "string"
+        ).slice(0, 10);
+    }
+} catch (error) {
+    historyItems = [];
+}
+
+function saveHistory() {
+    try {
+        localStorage.setItem(
+            "mysearch-history",
+            JSON.stringify(historyItems)
+        );
+    } catch (error) {
+        console.log("تعذر حفظ سجل البحث.");
+    }
+}
+
+function renderHistory() {
+    historyList.replaceChildren();
+    emptyMessage.hidden = historyItems.length > 0;
+    clearButton.hidden = historyItems.length === 0;
+
+    historyItems.forEach(query => {
+        const li = document.createElement("li");
+        li.className = "history-item";
+
+        const link = document.createElement("span");
+        link.className = "history-query";
+        link.textContent = "🔎 " + query;
+
+        link.addEventListener("click", () => {
+            input.value = query;
+            input.focus();
+        });
+
+        const repeatButton = document.createElement("button");
+        repeatButton.className = "small-button";
+        repeatButton.type = "button";
+        repeatButton.textContent = "إعادة البحث";
+
+        repeatButton.addEventListener("click", () => {
+            input.value = query;
+            form.requestSubmit();
+        });
+
+        li.append(link, repeatButton);
+        historyList.appendChild(li);
+    });
+}
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        searchType = tab.dataset.type;
+
+        tabs.forEach(item => {
+            item.classList.toggle("active", item === tab);
+        });
+
+        if (searchType === "images") {
+            input.placeholder = "ابحث عن الصور...";
+        } else if (searchType === "videos") {
+            input.placeholder = "ابحث عن الفيديوهات...";
+        } else {
+            input.placeholder = "ماذا تريد أن تبحث عنه؟";
+        }
+
+        input.focus();
+    });
+});
+
+form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const query = input.value.trim();
+
+    if (!query) {
+        input.focus();
+        return;
+    }
+
+    historyItems = [
+        query,
+        ...historyItems.filter(item => item !== query)
+    ].slice(0, 10);
+
+    saveHistory();
+    renderHistory();
+
+    let destination;
+
+    if (searchType === "images") {
+        destination = "https://www.google.com/search?tbm=isch&q=";
+    } else if (searchType === "videos") {
+        destination = "https://www.youtube.com/results?search_query=";
+    } else {
+        destination = "https://www.google.com/search?q=";
+    }
+
+    window.location.href = destination + encodeURIComponent(query);
+});
+
+clearButton.addEventListener("click", () => {
+    historyItems = [];
+    saveHistory();
+    renderHistory();
+});
+
+renderHistory();
+</script>
 
 </body>
 </html>
