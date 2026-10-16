@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MySearch - محرك البحث</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: white;
+    color: #202124;
+    text-align: center;
+}
+
+header {
+    text-align: right;
+    padding: 20px;
+}
+
+header a {
+    color: #4285f4;
+    text-decoration: none;
+}
+
+main {
+    padding: 100px 20px 60px;
+}
+
+.logo {
+    font-size: 65px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.b { color: #4285f4; }
+.r { color: #ea4335; }
+.y { color: #fbbc05; }
+.g { color: #34a853; }
+
+form {
+    max-width: 580px;
+    margin: auto;
+}
+
+input {
+    width: 90%;
+    padding: 15px;
+    border: 1px solid #dfe1e5;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:hover {
+    box-shadow: 0 1px 6px #00000030;
+}
+
+button {
+    margin: 20px 5px;
+    padding: 12px 20px;
+    border: 1px solid #dadce0;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #f8f9fa;
+}
+
+button:hover {
+    background: #eeeeee;
+}
+
+footer {
+    color: #70757a;
+    margin-top: 40px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="https://www.wikipedia.org">Wikipedia</a>
+</header>
+
+<main>
+    <div class="logo">
+        <span class="b">M</span><span class="r">y</span><span class="y">S</span><span class="b">e</span><span class="g">a</span><span class="r">r</span><span class="y">c</span><span class="b">h</span>
+    </div>
+
+    <form action="https://www.google.com/search" method="get">
+        <input
+            type="text"
+            name="q"
+            placeholder="ابحث في الإنترنت..."
+            required
+        >
+
+        <div>
+            <button type="submit">بحث</button>
+            <button type="button" onclick="window.location.href='https://www.google.com'">
+                فتح Google
+            </button>
+        </div>
+    </form>
+
+    <p>اكتشف العالم مع MySearch</p>
+</main>
+
+<footer>
+    MySearch © 2026
+</footer>
+
+</body>
+</html>
